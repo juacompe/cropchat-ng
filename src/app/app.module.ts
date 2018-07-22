@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 import { MdlModule } from '@angular-mdl/core'
 
 import { AppComponent } from './app.component';
+import { CatsComponent } from './cats/cats.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CatsComponent
   ],
   imports: [
     BrowserModule,

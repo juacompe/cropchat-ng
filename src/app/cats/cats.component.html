@@ -1,0 +1,18 @@
+<div>
+    <div id="cat-list" class="mdl-grid">
+      <div class="mdl-cell mdl-cell--3-col mdl-cell mdl-cell--1-col-tablet mdl-cell--hide-phone"></div>
+      <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-phone">
+        <mdl-card class="demo-card-square" *ngFor="let picture of cats()" (click)="displayDetails(picture['.key'])" mdl-shadow="2">
+          <mdl-card-title mdl-card-expand>
+            <h2 mdl-card-title-text>{{ picture.comment }}</h2>
+          </mdl-card-title>
+          <mdl-card-media>
+              <img src="{{ picture.url }}" />
+          </mdl-card-media>
+        </mdl-card>
+      </div>
+    </div>
+    <!-- <router-link class="add-picture-button mdl-button mdl-js-button mdl-button--fab mdl-button--colored" to="/post">
+      <i class="material-icons">add</i>
+    </router-link> -->
+</div>
