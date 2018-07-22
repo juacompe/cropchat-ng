@@ -9,11 +9,15 @@ export default class {
       .then(url => { this.catUrl = url })
   }
   postCat () {
+    let me = this
+    function back() {
+      me.view.backToHome()
+    }
     this.view.pushNewCat({
       url: this.catUrl,
       comment: this.title,
       info: 'Posted by Charles on Tuesday',
       created_at: -1 * new Date().getTime()
-    }).then(this.view.backToHome)
+    }).then(back)
   }
 }

@@ -25,9 +25,8 @@ describe('PostPresenter', () => {
     })
 
     describe('success', () => {
-      let view
       it('should go back to home page', async () => {
-        view = new MockBackToHome()
+        let view = new MockBackToHome()
         presenter.view = view
         presenter.catUrl = 'url'
         presenter.title = 'title'
@@ -39,7 +38,7 @@ describe('PostPresenter', () => {
       class MockBackToHome {
         constructor () { this.called = false }
         pushNewCat () { return Promise.resolve() }
-        backToHome () { view.called = true }
+        backToHome () { this.called = true }
         validate () {
           expect(this.called).toEqual(true)
         }

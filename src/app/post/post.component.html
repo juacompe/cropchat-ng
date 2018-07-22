@@ -1,0 +1,21 @@
+<form>
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--8-col">
+        <mdl-card mdl-card-expand mdl-shadow="2">
+            <mdl-card-media mdl-card-expand>
+              <img src="{{ presenter.catUrl }}" />
+            </mdl-card-media>
+        </mdl-card>
+    </div>
+    <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
+      <p>
+        <mdl-textfield [(ngModel)]="presenter.title" [ngModelOptions]="{standalone: true}" label="Describe me" type="text" floating-label></mdl-textfield>
+      </p>
+      <div class="actions">
+        <button (click)="postCat()" mdl-button  mdl-button-type="raised" mdl-colored="accent" mdl-ripple>
+          POST A CAT
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

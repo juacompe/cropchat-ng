@@ -20,7 +20,7 @@ describe('CatAPI', () => {
     })
 
     function createResponseWithBody (responseBody) {
-      return { 'body': responseBody }
+      return responseBody
     }
   })
 })
