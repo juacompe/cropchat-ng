@@ -1,0 +1,12 @@
+.add-picture-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 998;
+}
+.mdl-card {
+  width: 100%;
+}
+.mdl-card__media > img {
+  width: 100%;
+}

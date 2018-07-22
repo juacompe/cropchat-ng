@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MdlModule } from '@angular-mdl/core'
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule }     from './app-routing.module';
 import { CatsComponent } from './cats/cats.component';
 
 @NgModule({
@@ -12,7 +13,8 @@ import { CatsComponent } from './cats/cats.component';
   ],
   imports: [
     BrowserModule,
-    MdlModule
+    MdlModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

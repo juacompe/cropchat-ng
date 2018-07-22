@@ -8,13 +8,13 @@
        <mdl-layout-drawer>
           <mdl-layout-title>{{ title }}</mdl-layout-title>
           <nav class="mdl-navigation">
-             <a class="mdl-navigation__link" href="#/">Home</a>
-             <a class="mdl-navigation__link" href="#/post">Post a picture</a>
+             <a class="mdl-navigation__link" routerLink="/">Home</a>
+             <a class="mdl-navigation__link" routerLink="/post">Post a picture</a>
           </nav>
        </mdl-layout-drawer>
        <mdl-layout-content>
           <!-- Your content goes here -->
-          <cats></cats>
+          <router-outlet></router-outlet>
        </mdl-layout-content>
     </mdl-layout>
  </div>
