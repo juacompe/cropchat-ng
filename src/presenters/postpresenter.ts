@@ -10,9 +10,7 @@ export class PostPresenter {
   catUrl = ''
   title = ''
 
-  constructor (private view: View) {
-    this.view = view
-  }
+  constructor (public view: View) {}
   init () {
     CatAPI.getRandomCatUrl(this.view.$http)
       .then(url => { this.catUrl = url })

@@ -3,7 +3,7 @@ import { fakeAsync, flush } from '@angular/core/testing';
 
 
 describe('PostPresenter', () => {
-  let presenter
+  let presenter: PostPresenter
   beforeEach(() => {
     presenter = new PostPresenter(new MockBackToHome())
   })
@@ -29,15 +29,13 @@ describe('PostPresenter', () => {
       it('should go back to home page', fakeAsync(() => {
         let view = new MockBackToHome()
         presenter.view = view
-        presenter.catUrl = 'url'
-        presenter.title = 'title'
         presenter.postCat()
         flush()
         view.validate()
       }))
 
     })
-    function input (textField, jsonField) {
+    function input (textField, jsonField): StubPushNewCat {
       let view = new StubPushNewCat(jsonField)
       presenter[textField] = view.expected
       presenter.view = view
