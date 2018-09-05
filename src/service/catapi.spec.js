@@ -5,18 +5,18 @@ describe('CatAPI', () => {
     it('should return url', () => {
       let response = createResponseWithBody(`
       <response>
-        <data>
-        <images>
-          <image>
-            <url>https://thecatapi.com/api/images/get.php?id=9ea</url>
-            <id>9ea</id>
-            <source_url>http://thecatapi.com/?id=9ea</source_url>
-          </image>
-        </images>
-        </data>
+          <data>
+              <images>
+                  <image>
+                      <id>ib</id>
+                      <url>https://25.media.tumblr.com/tumblr_lz7k712tkY1r2rj8po1_500.jpg</url>
+                      <source_url>https://thecatapi.com/?image_id=ib</source_url>
+                  </image>
+              </images>
+          </data>
       </response>`)
       let url = CatAPI.parseUrlFromResponse(response)
-      expect(url).toEqual('https://thecatapi.com/api/images/get.php?id=9ea')
+      expect(url).toEqual('https://25.media.tumblr.com/tumblr_lz7k712tkY1r2rj8po1_500.jpg')
     })
 
     function createResponseWithBody (responseBody) {
