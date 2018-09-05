@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-import PostPresenter from '../../presenters/PostPresenter';
+import { PostPresenter, View } from '../../presenters/PostPresenter';
 import { CatlistService } from '../catlist.service';
 
 @Component({
@@ -10,10 +10,10 @@ import { CatlistService } from '../catlist.service';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
-export class PostComponent implements OnInit {
+export class PostComponent implements OnInit, View {
   presenter: PostPresenter
 
-  constructor(private $http: HttpClient, private catlistService: CatlistService, private router: Router) {
+  constructor(public $http: HttpClient, private catlistService: CatlistService, private router: Router) {
     this.presenter = new PostPresenter(this)
   }
 

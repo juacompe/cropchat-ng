@@ -1,9 +1,11 @@
-import PostPresenter from './PostPresenter'
-import flushPromises from 'flush-promises'
+import { PostPresenter, View } from './PostPresenter'
+import { fakeAsync, flush } from '@angular/core/testing';
+
+
 describe('PostPresenter', () => {
   let presenter
   beforeEach(() => {
-    presenter = new PostPresenter()
+    presenter = new PostPresenter(new MockBackToHome())
   })
   describe('constructor', () => {
     it('should have catUrl or the image would not display on post page', () => {
@@ -21,28 +23,19 @@ describe('PostPresenter', () => {
       let view = input('title', 'comment')
       presenter.postCat()
       view.validate()
-      flushPromises()
     })
 
     describe('success', () => {
-      it('should go back to home page', async () => {
+      it('should go back to home page', fakeAsync(() => {
         let view = new MockBackToHome()
         presenter.view = view
         presenter.catUrl = 'url'
         presenter.title = 'title'
         presenter.postCat()
-        await flushPromises()
+        flush()
         view.validate()
-      })
+      }))
 
-      class MockBackToHome {
-        constructor () { this.called = false }
-        pushNewCat () { return Promise.resolve() }
-        backToHome () { this.called = true }
-        validate () {
-          expect(this.called).toEqual(true)
-        }
-      }
     })
     function input (textField, jsonField) {
       let view = new StubPushNewCat(jsonField)
@@ -50,18 +43,32 @@ describe('PostPresenter', () => {
       presenter.view = view
       return view
     }
-    class StubPushNewCat {
-      constructor (field) {
-        this.expected = 'expected'
+    class StubPushNewCat implements View {
+      $http: any
+      expected = 'expected'
+      actual = ''
+      
+      constructor (private field) {
         this.field = field
       }
       pushNewCat (newCat) {
         this.actual = newCat[this.field]
         return Promise.resolve()
       }
+      backToHome () {}
       validate () {
         expect(this.expected).toEqual(this.actual)
       }
     }
   })
+  class MockBackToHome implements View {
+    $http: any
+    called = false
+    constructor () {}
+    pushNewCat () { return Promise.resolve() }
+    backToHome () { this.called = true }
+    validate () {
+      expect(this.called).toEqual(true)
+    }
+  }
 })

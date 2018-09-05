@@ -1,8 +1,17 @@
 import CatAPI from '../service/catapi'
-export default class {
-  constructor (view) {
+
+export interface View {
+  $http
+  backToHome(): void
+  pushNewCat(cat: Object)
+}
+
+export class PostPresenter {
+  catUrl = ''
+  title = ''
+
+  constructor (private view: View) {
     this.view = view
-    this.catUrl = ''
   }
   init () {
     CatAPI.getRandomCatUrl(this.view.$http)
