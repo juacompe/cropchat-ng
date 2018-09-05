@@ -1,4 +1,4 @@
-import { PostPresenter, View } from './PostPresenter'
+import { PostPresenter, View } from './postpresenter'
 import { fakeAsync, flush } from '@angular/core/testing';
 
 

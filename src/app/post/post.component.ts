@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-import { PostPresenter, View } from '../../presenters/PostPresenter';
+import { PostPresenter, View } from '../../presenters/postpresenter';
 import { CatlistService } from '../catlist.service';
 
 @Component({
